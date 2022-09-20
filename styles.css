@@ -1,0 +1,132 @@
+:root{
+    --background-grey: #DEE4EC;
+    --background-white: #fff;
+    --highlight-blue: #1A92D4;
+    --shadow-grey: #babdc4;
+}
+body{
+    display:grid;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    grid-template-areas: "sidebar header header"
+    "sidebar projects upcoming"
+    "sidebar projects goals";
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 140px 1fr 1fr;
+}
+.header, .sidebar, .projects, .upcoming, .goals{
+    padding: 20px;
+}
+/* header ********************************************************* */
+.header{
+    grid-area: header;
+    display:grid;
+    grid-template-areas: "top"
+    "bottom";
+    grid-template-rows: 3fr 2fr;
+    row-gap: 10px;
+    padding-top: 10px;
+    box-shadow: 0 0 5px 5px var(--shadow-grey);
+}
+.header-top{
+    grid-area: top;
+    display:grid;
+    grid-template-columns: 3fr 2fr;
+    column-gap: 20px;
+}
+.searchbar{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+}
+#search-field{
+    padding: 5px;
+    width: 30%;
+    height: 15px;
+    border-radius: 15px;
+    flex: 1;
+}
+#search-field::placeholder{
+    padding-left: 10px;
+}
+.user{
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+    align-items: center;
+}
+img{
+    border-radius: 50%;
+}
+.header-bottom{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.user-greeting{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+.user-greeting img{
+    flex: 0;
+}
+p, h2, h3{
+    margin: 0;
+}
+.greeting{
+    display: flex;
+    flex-direction: column;
+}
+.actions{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.actions button{
+    background-color: var(--highlight-blue);
+    color: var(--background-white);
+    border-radius: 15px;
+    border: none;
+    padding: 5px 15px;
+}
+
+/* sidebar ********************************************************* */
+.sidebar{
+    grid-area: sidebar;
+    background-color: var(--highlight-blue);
+}
+ul{
+    list-style: none;
+}
+
+/* projects ********************************************************* */
+.projects{
+    grid-area: projects;
+    background-color: var(--background-grey);
+}
+
+/* upcoming ********************************************************* */
+.upcoming{
+    grid-area: upcoming;
+    background-color: var(--background-grey);
+}
+.upcoming-list, .goals-list{
+    background-color: var(--background-white);
+    border-radius: 5px;
+    padding: 20px;
+}
+/* goals ********************************************************* */
+.goals{
+    grid-area: goals;
+    background-color: var(--background-grey);
+}
+.goals-list div{
+    /* background-color: var(--background-white); */
+}
