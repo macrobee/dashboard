@@ -2,7 +2,12 @@
     --background-grey: #DEE4EC;
     --background-white: #fff;
     --highlight-blue: #1A92D4;
+    --clicked-blue: #1db6e5;
     --shadow-grey: #babdc4;
+    --task-color-daily: rgb(128, 208, 59);
+    --task-color-medium: rgb(214, 197, 66);
+    --task-color-big: rgb(219, 74, 91);
+    --task-color-chore: rgb(88, 83, 226);
 }
 body{
     display:grid;
@@ -14,7 +19,7 @@ body{
     grid-template-areas: "sidebar header header"
     "sidebar projects upcoming"
     "sidebar projects goals";
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 2fr 7fr 2fr;
     grid-template-rows: 140px 1fr 1fr;
 }
 .header, .sidebar, .projects, .upcoming, .goals{
@@ -29,7 +34,7 @@ body{
     grid-template-rows: 3fr 2fr;
     row-gap: 10px;
     padding-top: 10px;
-    box-shadow: 0 0 5px 5px var(--shadow-grey);
+    box-shadow: 0 2px 5px 5px var(--shadow-grey);
 }
 .header-top{
     grid-area: top;
@@ -58,6 +63,9 @@ body{
     gap: 20px;
     justify-content: end;
     align-items: center;
+}
+.username{
+    padding: 0;
 }
 img{
     border-radius: 50%;
@@ -92,35 +100,125 @@ p, h2, h3{
 .actions button{
     background-color: var(--highlight-blue);
     color: var(--background-white);
-    border-radius: 15px;
+    border-radius: 17px;
     border: none;
-    padding: 5px 15px;
+    padding: 7px 15px;
+    transition: 0.3s;
+}
+.actions button:hover{
+    background-color:var(--clicked-blue);
+    box-shadow: 2px 2px 4px 4px var(--shadow-grey);
 }
 
 /* sidebar ********************************************************* */
 .sidebar{
     grid-area: sidebar;
     background-color: var(--highlight-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+}
+.sidebar-title{
+    color: var(--background-white);
+    display: flex;
+    gap: 20px;
+    justify-content: start;
+    align-items: center;
+}
+.sidebar-title h3{
+    padding: 0;
+    font-size: 1.5em;
 }
 ul{
     list-style: none;
+    color: var(--background-white);
+    padding: 0;
+    padding-bottom: 10px;
 }
+ul li{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-bottom: 10px;
 
+}
+h3{
+    padding-bottom: 10px;
+}
 /* projects ********************************************************* */
 .projects{
     grid-area: projects;
     background-color: var(--background-grey);
+    display: grid;
 }
-
+.project-grid{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    overflow: scroll;
+    padding-right: 10px;
+}
+h1{
+    margin: 0;
+}
+p{
+    font-size: 0.9em;
+    font-weight: 300;
+}
+.card{
+    background-color:var(--background-white);
+    border-radius: 10px;
+    border-left: 10px solid var(--task-color-daily);
+    padding: 10px;
+}
+.card h4{
+    margin-bottom: 0;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--background-grey); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--highlight-blue); 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--clicked-blue); 
+  }
 /* upcoming ********************************************************* */
 .upcoming{
     grid-area: upcoming;
     background-color: var(--background-grey);
 }
+.upcoming, .goals{
+    padding-left: 0;
+}
+h5{
+    margin: 0;
+    font-size: 1em;
+}
+
 .upcoming-list, .goals-list{
     background-color: var(--background-white);
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
+    box-shadow: 3px 2px 5px 3px var(--shadow-grey);
+}
+.upcoming-list div, .goals-list div{
+    padding: 10px;
+    border-bottom: 2px solid var(--background-grey);
+}
+.upcoming-list div:last-child, .goals-list div:last-child{
+    border-bottom: none;
 }
 /* goals ********************************************************* */
 .goals{
