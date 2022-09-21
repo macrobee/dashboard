@@ -4,6 +4,7 @@
     --highlight-blue: #1A92D4;
     --clicked-blue: #1db6e5;
     --shadow-grey: #babdc4;
+    --text-color: #224;
     --task-color-daily: rgb(128, 208, 59);
     --task-color-medium: rgb(214, 197, 66);
     --task-color-big: rgb(219, 74, 91);
@@ -12,6 +13,7 @@
 body{
     display:grid;
     font-family: 'Ubuntu', sans-serif;
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -132,7 +134,7 @@ p, h2, h3{
 }
 ul{
     list-style: none;
-    color: var(--background-white);
+    
     padding: 0;
     padding-bottom: 10px;
 }
@@ -142,6 +144,18 @@ ul li{
     align-items: center;
     padding-bottom: 10px;
 
+}
+li a{
+    color: var(--background-white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+li a:hover{
+    /* box-shadow: 0 0 3px 3px var(--background-grey); */
+    text-shadow: 0 0 5px var(--background-white);
+    /* backdrop-filter: blur(5px); */
 }
 h3{
     padding-bottom: 10px;
@@ -156,6 +170,7 @@ h3{
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: stretch;
     overflow: scroll;
     padding-right: 10px;
 }
@@ -171,9 +186,26 @@ p{
     border-radius: 10px;
     border-left: 10px solid var(--task-color-daily);
     padding: 10px;
+    transition: 0.3s;
+    display: grid;
+    grid-template-rows: 30px 130px 20px;
+
+}
+
+.card:hover{
+    box-shadow: 3px 3px 5px 5px var(--shadow-grey);
+}
+a{
+    text-decoration: none;
+    color: var(--text-color);
 }
 .card h4{
-    margin-bottom: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+}
+.due-date{
+    font-style: italic;
+    
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -202,6 +234,9 @@ p{
 .upcoming, .goals{
     padding-left: 0;
 }
+.upcoming-list div:hover, .goals-list div:hover{
+    text-shadow: 0 0 5px var(--clicked-blue);
+}
 h5{
     margin: 0;
     font-size: 1em;
@@ -216,6 +251,7 @@ h5{
 .upcoming-list div, .goals-list div{
     padding: 10px;
     border-bottom: 2px solid var(--background-grey);
+    transition: 0.3s;
 }
 .upcoming-list div:last-child, .goals-list div:last-child{
     border-bottom: none;
